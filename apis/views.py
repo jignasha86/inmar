@@ -82,8 +82,13 @@ def department_detail(request, pk):
 
     elif request.method == 'PUT':
         serializer = DepartmentSerializer(item, data=request.data)
+        try:
+            location = Location.objects.get(id=request.data['location']['id'])
+        except:
+               location = Location.objects.get(id=request.data['location'])
+
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(location=location)
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
@@ -132,8 +137,13 @@ def category_detail(request, pk):
 
     elif request.method == 'PUT':
         serializer = CategorySerializer(item, data=request.data)
+        try:
+            department = Department.objects.get(id=request.data['department']['id'])
+        except:
+               department = Department.objects.get(id=request.data['department'])
+             
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(department=department)
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
@@ -182,8 +192,12 @@ def subcategory_detail(request, pk):
 
     elif request.method == 'PUT':
         serializer = SubcategorySerializer(item, data=request.data)
+        try:
+            category = Category.objects.get(id=request.data['category']['id'])
+        except:
+               category = Category.objects.get(id=request.data['category'])
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(category=category)
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
@@ -231,8 +245,12 @@ def flatdata_detail(request, pk):
 
     elif request.method == 'PUT':
         serializer = FlatDataSerializer(item, data=request.data)
+        try:
+            subcategory = Subcategory.objects.get(id=request.data['subcategory']['id'])
+        except:
+               subcategory = Subcategory.objects.get(id=request.data['subcategory'])
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(subcategory=subcategory)
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 

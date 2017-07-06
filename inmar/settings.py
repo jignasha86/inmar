@@ -25,7 +25,7 @@ SECRET_KEY = 'z4(eza*&5_m0kfj3j#-6eoh4%2*6)$1u-o*&@zyhbu#@=62er-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['149.56.237.37']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apis',
     'rest_framework',
     'drf_generators',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -55,7 +56,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    '149.56.237.37:3001',
+    '149.56.237.37:8000',
+)
 
 ROOT_URLCONF = 'inmar.urls'
 

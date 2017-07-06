@@ -3,6 +3,7 @@ Pygments==2.2.0
 argparse==1.2.1
 certifi==2017.4.17
 chardet==3.0.4
+django-cors-headers==2.1.0
 djangorestframework==3.6.3
 drf-generators==0.3.0
 httpie==0.9.9
