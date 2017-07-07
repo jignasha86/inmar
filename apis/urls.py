@@ -23,10 +23,12 @@ urlpatterns = [
 
     url(r'^'+base_url+'/importdata$', views.import_data),
 
-    url(r'^'+base_url+'/location/(?P<pk>[0-9]+)/department/$', views.location_rel),
-    url(r'^'+base_url+'/department/(?P<pk>[0-9]+)/category/$', views.department_rel),
-    url(r'^'+base_url+'/category/(?P<pk>[0-9]+)/subcategory/$', views.category_rel),
-    url(r'^'+base_url+'/subcategory/(?P<pk>[0-9]+)/product/$', views.subcategory_rel),
+    url(r'^'+base_url+'/flare$', views.flare_data),
+
+    url(r'^'+base_url+'/location/(?P<pk>[0-9]+)/department$', views.location_rel),
+    url(r'^'+base_url+'/department/(?P<pk>[0-9]+)/category$', views.department_rel),
+    url(r'^'+base_url+'/category/(?P<pk>[0-9]+)/subcategory$', views.category_rel),
+    url(r'^'+base_url+'/subcategory/(?P<pk>[0-9]+)/product$', views.subcategory_rel),
 
 ]
 

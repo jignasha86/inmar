@@ -258,6 +258,36 @@ def flatdata_detail(request, pk):
         item.delete()
         return Response(status=204)
 
+@api_view(['GET'])
+def flare_data(request):
+    if request.method == 'GET':
+       output = {"name":"Start","children":[]}
+       lts = Location.objects.all()
+       i = 0
+       for lt in lts:
+           output['children'].append({"name": lt.name, "children": []})
+           x = 0         
+           dts = Department.objects.filter(location=lt).all()
+           for dt in dts:
+               output['children'][i]["children"].append({"name": dt.name, "children": []})
+               y = 0
+               cts = Category.objects.filter(department=dt).all()           
+               for ct in cts:
+                   output['children'][i]["children"][x]["children"].append({"name": ct.name, "children": []})
+                   z = 0
+                   sts = Subcategory.objects.filter(category=ct).all()
+                   for st in sts:
+                       output['children'][i]["children"][x]["children"][y]["children"].append({"name": st.name, "children": []})
+                       items = FlatData.objects.filter(subcategory=st).all()
+                       for item in items:
+                           output['children'][i]["children"][x]["children"][y]["children"]\
+                           [z]["children"].append({"name": item.name, "children": []})   
+                       z = z + 1
+                   y = y + 1
+               x = x + 1
+           i = i + 1
+       return Response(output)
+
 @api_view(['POST'])
 def import_data(request):
     if request.method == 'POST':
