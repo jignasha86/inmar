@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_generators',
     'corsheaders',
+    'rest_framework_docs',
 ]
 
 REST_FRAMEWORK = {
