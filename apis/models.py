@@ -15,7 +15,6 @@ class Location(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'location'
 
 class Department(models.Model):
@@ -25,7 +24,6 @@ class Department(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'department'
 
 class Category(models.Model):
@@ -35,7 +33,6 @@ class Category(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'category'
 
 class Subcategory(models.Model):
@@ -45,7 +42,6 @@ class Subcategory(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'subcategory'
 
 
@@ -56,6 +52,5 @@ class FlatData(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'flat_data'
 

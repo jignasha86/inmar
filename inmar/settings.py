@@ -31,13 +31,13 @@ ALLOWED_HOSTS = ['149.56.237.37']
 # Application definition
 
 INSTALLED_APPS = [
+    'apis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apis',
     'rest_framework',
     'drf_generators',
     'corsheaders',
