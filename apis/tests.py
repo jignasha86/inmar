@@ -1,6 +1,9 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
-base_url = '/api/v1/'
+from django.conf import settings
+
+base_url = '/'+getattr(settings, "BASE_URL", "api/v1/")
+
 class LocationTests(APITestCase):
     def test_location_crud(self):
         """
@@ -177,3 +180,46 @@ class ProductTests(APITestCase):
         self.assertEqual(response.status_code, 400)
 
 
+class MetaTests(APITestCase):
+    def test_meta_data(self):
+        """
+        Ensure meta data of resources fetchable
+        """
+
+        url = base_url+'location'
+        data = {'name':'location'}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+        lid = response.data['id']
+        url = base_url+'department'
+        data = {'name':'department', 'location': lid}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+        did = response.data['id']
+        url = base_url+'category'
+        data = {'name':'category', 'department': did}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+        cid = response.data['id']
+        url = base_url+'subcategory'
+        data = {'name':'subcategory', 'category': cid}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+        url = base_url+'flatdata'
+        sid = response.data['id']
+        data = {'name': 'product', 'subcategory': sid}
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data['name'], data['name'])
+        url = base_url+'location/'+str(lid)+'/department'
+        response = self.client.get(url)
+        self.assertEqual(response.data[0]['name'], 'department')
+        url = base_url+'department/'+str(did)+'/category'
+        response = self.client.get(url)
+        self.assertEqual(response.data[0]['name'], 'category')
+        url = base_url+'category/'+str(cid)+'/subcategory'
+        response = self.client.get(url)
+        self.assertEqual(response.data[0]['name'], 'subcategory')
+        url = base_url+'subcategory/'+str(sid)+'/product'
+        response = self.client.get(url)
+        self.assertEqual(response.data[0]['name'], 'product')
