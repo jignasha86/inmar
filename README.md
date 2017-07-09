@@ -12,7 +12,7 @@
    3) git clone https://github.com/jignasha86/inmar.git
    4) mv Dockerfile & docker-compose.yml outside of inmar repo
       eg, mv inmar/Dockerfile . && mv inmar/docker-compose.yml .
-   5) run **dokcer-compose up -d mysql**
+   5) run **docker-compose up -d mysql**
    6) run **docker-compose up -d web**
    
 #### Open http://localhost:3001/docs or http://{ip}:3001/docs in browser, to view apis documentation
@@ -21,9 +21,16 @@
      1) docker exec -it docker_web_1 /bin/bash
      2) http -f POST http://localhost:3001/api/v1/importdata file@Data.csv
      
+## Steps to deploy without docker
+    1) Make sure above pre-requisites existing on your machine
+    2) Create python virtual env
+    3) Run pip install -r requirement.txt
+    4) Change settings in inmar/settings.py according to your database settings
+    5) Run make run
+     
 #### Run unit test cases
      1) docker exec -it docker_web_1 /bin/bash
-     2) python manage.py test apis
+     2) python manage.py test apis or make test
      
 
     
