@@ -536,7 +536,7 @@ def import_data(request):
 		       serializer.save(subcategory=Subcategory.objects.get(id=sid))
 
 		return Response(status=204)
-	   return Response("Pass file to import",status=400) 
+	   return Response(_("Pass file to import"),status=400) 
     except Exception as ex:
            logger.error(_(ex.message))
            raise ex
