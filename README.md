@@ -23,7 +23,7 @@
      
 ## Steps to deploy without docker
     1) Make sure above pre-requisites existing on your machine
-    2) Create python virtual env
+    2) Create python virtual env && source venv/bin/activate
     3) Run pip install -r requirement.txt
     4) Change settings in inmar/settings.py according to your database settings
     5) Run make run
