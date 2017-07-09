@@ -25,7 +25,7 @@ SECRET_KEY = 'z4(eza*&5_m0kfj3j#-6eoh4%2*6)$1u-o*&@zyhbu#@=62er-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['149.56.237.37']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -61,8 +61,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    '149.56.237.37:3001',
-    '149.56.237.37:8000',
+    '*',
 )
 
 ROOT_URLCONF = 'inmar.urls'
@@ -94,8 +93,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inmar',
         'USER': 'root',
-        'PASSWORD': '52T8FVYZJse',
-        'HOST': 'localhost',
+        'PASSWORD': 'admin',
+        'HOST': 'mysql',
         'PORT': '',
     }
 }
