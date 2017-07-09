@@ -21,6 +21,10 @@
      1) docker exec -it docker_web_1 /bin/bash
      2) http -f POST http://localhost:3001/api/v1/importdata file@Data.csv
      
+#### Run unit test cases
+     1) docker exec -it docker_web_1 /bin/bash
+     2) python manage.py test apis
+     
 
     
  
