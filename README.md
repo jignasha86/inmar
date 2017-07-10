@@ -15,7 +15,7 @@
    5) run **docker-compose up -d mysql**
    6) run **docker-compose up -d web**
    
-#### Open http://localhost:3001/docs or http://{ip}:3001/docs in browser, to view apis documentation
+#### Open http://localhost:3001/docs or http://{your_ip}:3001/docs in browser, to view apis documentation
 
 #### If backend dont have any data, then new data can be imported by running below commands
      1) docker exec -it docker_web_1 /bin/bash
